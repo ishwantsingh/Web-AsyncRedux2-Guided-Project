@@ -68,3 +68,10 @@ export function makeQuoteOfTheDay(id) {
     payload: id,
   };
 }
+
+export function wakeUpSaga() {
+  return {
+    type: types.WAKE_UP_SAGA,
+    payload: 'gaga',
+  };
+}

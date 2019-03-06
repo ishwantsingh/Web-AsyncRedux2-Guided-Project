@@ -56,6 +56,8 @@
         "quotes": 0,
         "func-names": 0,
         "jsx-a11y/label-has-for": 0,
-        "jsx-a11y/label-has-associated-control": 0
+        "jsx-a11y/label-has-associated-control": 0,
+        "require-yield": 0,
+        "react/no-render-return-value": 0
     }
 }
