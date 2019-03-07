@@ -92,3 +92,7 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
 ## Protect the /quotes route
   * Create a Route that renders either a `<Redirect />` to `Login` or `<Spinner><Quotes /><QuoteForm /></Spinner>`.
   * Which is rendered depends on whether there exists a `'userToken'` in `localStorage`.
+
+## Axios and adding the Auth header
+  * Refactor the app to use Axios.
+  * Create a custom Axios instance that adds the `Authorization: Bearer <token>` header to every request.
