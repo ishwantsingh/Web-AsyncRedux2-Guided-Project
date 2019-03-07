@@ -24,7 +24,7 @@ export default function Container() {
           <Link to='/login'>Login</Link>
         </nav>
 
-        <h4>Welcome to my homepage</h4>
+        <h3>Welcome to my site</h3>
 
         <Route
           path='/quotes'

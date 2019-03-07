@@ -28,7 +28,7 @@ export class QuoteForm extends React.Component {
   render() {
     return (
       <div>
-        <h3>You have {this.props.numberOfQuotes}. Add New Quote!</h3>
+        <h3>{this.props.numberOfQuotes} quotes total. Add New!</h3>
         <div>
           <em>Author: </em>
           <input ref={this.authorRef} type="text" />
