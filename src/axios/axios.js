@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 export default function () {
-  const token = localStorage.get('userToken');
+  const token = localStorage.getItem('userToken');
 
   const instance = axios.create({
     headers: {
