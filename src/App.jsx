@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
@@ -40,4 +39,3 @@ const render = () => ReactDOM.render(
 
 saga.run(rootSaga);
 render();
-store.subscribe(render);
