@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Quotes from './Quotes';
 import QuoteForm from './QuoteForm';
 import Spinner from './Spinner';
+import Login from './Login';
+import { login } from '../state/actionCreators';
+
 
 const StyledContainer = styled.div`
   padding: 10px;
@@ -14,7 +18,24 @@ const StyledContainer = styled.div`
   }
 `;
 
-export default function Container() {
+export function ProtectedRoute() {
+  return (
+    <Route
+      path='/quotes'
+      render={() => (
+        localStorage.getItem('userToken')
+          ? (
+            <Spinner>
+              <Quotes />
+              <QuoteForm />
+            </Spinner>
+          )
+          : <Redirect to='/login' />
+      )} />
+  );
+}
+
+export function Container(props) {
   return (
     <Router>
       <StyledContainer>
@@ -26,20 +47,15 @@ export default function Container() {
 
         <h3>Welcome to my site</h3>
 
-        <Route
-          path='/quotes'
-          render={() => (
-            <Spinner>
-              <Quotes />
-              <QuoteForm />
-            </Spinner>
-          )} />
+        <ProtectedRoute />
 
         <Route
           path='/login'
-          render={() => <button>Login</button>}
+          render={() => <Login login={props.login} />}
         />
       </StyledContainer>
     </Router>
   );
 }
+
+export default connect(st => st, { login })(Container);
