@@ -38,6 +38,13 @@ export function fetchQuotes() {
   };
 }
 
+export function fetchQuotesSuccess(quotes) {
+  return {
+    type: types.FETCH_QUOTES_SUCCESS,
+    payload: quotes,
+  };
+}
+
 export function spinnerOn() {
   return {
     type: types.SPINNER_ON,
