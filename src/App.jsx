@@ -7,6 +7,10 @@ import Container from './components/Container';
 import { quotes, quoteOfTheDay, spinner } from './state/reducers';
 
 // create custom middleware to save 'userToken' to local storage on LOGIN_SUCCESS
+const customMiddleware = store => next => action => {
+  // do something with the action here, and then don't forget to call next!
+  next(action);
+};
 
 const rootReducer = combineReducers({
   quotes,
