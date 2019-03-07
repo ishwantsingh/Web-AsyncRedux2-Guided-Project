@@ -7,8 +7,10 @@ import * as actions from '../state/actionCreators';
 const fetchThem = () => axios.get('http://gabe.mockable.io/quotes');
 
 function* fetchQuotes() {
+  yield put(actions.spinnerOn());
   const res = yield call(fetchThem);
   yield put(actions.fetchQuotesSuccess(res.data));
+  yield put(actions.spinnerOff());
 }
 
 export default function watchFetchQuotes() {
