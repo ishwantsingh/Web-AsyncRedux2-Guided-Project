@@ -13,6 +13,7 @@ const StyledContainer = styled.div`
     a {
       margin-right: 12px;
     }
+    margin-bottom: 20px;
   }
 `;
 
@@ -28,11 +29,23 @@ export default function Container() {
           <Link to='/quotes'>Quotes</Link>
           <Link to='/login'>Login</Link>
         </nav>
-        <Login />
-        <Spinner>
-          <Quotes />
-          <QuoteForm />
-        </Spinner>
+
+        <Route
+          path='/quotes'
+          render={() => (
+            <Spinner>
+              <Quotes />
+              <QuoteForm />
+            </Spinner>
+          )}
+        />
+
+        <Route
+          path='/login'
+          render={() => (
+            <Login />
+          )}
+        />
       </StyledContainer>
     </Router>
   );
