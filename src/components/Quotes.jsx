@@ -27,7 +27,6 @@ export class Quotes extends React.Component {
             ))
           }
         </div>
-        <button onClick={() => this.props.login({ username: 'me', password: '123' })}>log in</button>
       </div>
     );
   }
