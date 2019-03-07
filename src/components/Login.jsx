@@ -11,7 +11,7 @@ export class Login extends React.Component {
   onLogin = () => {
     const username = this.userRef.current.value;
     const password = this.passRef.current.value;
-    
+
     this.props.login({ username, password })
   }
 
@@ -21,7 +21,7 @@ export class Login extends React.Component {
         <div>username <input type="text" ref={this.userRef} /></div>
         <div>password <input type="text" ref={this.passRef} /></div>
 
-        <button onClick={}>Log in</button>
+        <button onClick={this.onLogin}>Log in</button>
         <button onClick={() => localStorage.clear()}>Log out</button>
       </div>
     );
