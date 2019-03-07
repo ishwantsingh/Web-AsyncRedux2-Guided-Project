@@ -2,6 +2,16 @@ import uuid from 'uuid';
 import * as types from './actionTypes';
 
 
+export const login = (username, password) => dispatch => {
+  dispatch(spinnerOn());
+  fetch(`http://gabe.mockable.io/quotes/login?username=${username}&password=${password}`)
+    .then(res => res.json())
+    .then(res => {
+      dispatch({ type: types.LOGIN_SUCCESS, payload: res.userToken });
+      dispatch(spinnerOff());
+    });
+};
+
 export const deleteQuoteAsync = id => dispatch => {
   dispatch(spinnerOn());
   fetch(`http://gabe.mockable.io/quotes/${id}`, { method: 'DELETE' })

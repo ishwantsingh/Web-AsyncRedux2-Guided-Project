@@ -4,3 +4,4 @@ export const ADD_QUOTES = 'ADD_QUOTES';
 export const DELETE_QUOTE = 'DELETE_QUOTE';
 export const SPINNER_ON = 'SPINNER_ON';
 export const SPINNER_OFF = 'SPINNER_OFF';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

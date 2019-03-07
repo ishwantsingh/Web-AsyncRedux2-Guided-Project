@@ -5,8 +5,16 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import Container from './components/Container';
 import { quotes, quoteOfTheDay, spinner } from './state/reducers';
+import * as types from './state/actionTypes';
 
-// we are missing the spinner slice of state...
+
+const addTokenToLocalStorage = store => next => action => {
+  if (action.type === types.LOGIN_SUCCESS) {
+    localStorage.setItem('userToken', action.payload);
+  }
+  next(action);
+};
+
 const rootReducer = combineReducers({
   quotes,
   quoteOfTheDay,
@@ -17,7 +25,7 @@ const store = createStore(
   rootReducer,
   {},
   compose(
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, addTokenToLocalStorage),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   ),
 );
