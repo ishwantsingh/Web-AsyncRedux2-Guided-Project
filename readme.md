@@ -55,6 +55,17 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
           "id": "{{id}}",
       }
     ```
-
+  * GET /quotes/login?username={username}&password={password}
+  * and returning the token:
+    ```javascript
+      {
+          "userToken": "86332fbe-2d02-4a16-afb0-9b7f0a67d324",
+          "username": "{{username}}",
+          "password": "{{password}}"
+      }
+    ```
 # Steps
-  * Students should test the endpoints on Postman.
+  * Test the endpoints on Postman.
+  * Flesh out a custom middleware that shoves action.payload into a localStorage key 'userToken', on LOGIN_SUCCESS.
+  * Flesh out the login async action creator that hits quotes/login and dispatches a LOGIN_SUCCESS with the token as payload.
+  * On login success, an action of type LOGIN_SUCCESS and payload containing the res.userToken is dispatched.
