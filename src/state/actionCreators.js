@@ -5,6 +5,7 @@ import * as types from './actionTypes';
 // create an async action creator login, that takes username and password,
 // and hits the login api, and triggers a LOGIN_SUCCESS action with the userToken as payload.
 export const login = user => dispatch => {
+  dispatch({ type: 'LOGIN_STARTED' });
   fetch(`http://gabe.mockable.io/quotes/login?username=${user.username}&password=${user.password}`)
     .then(res => res.json())
     .then(data => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Quotes from './Quotes';
 import QuoteForm from './QuoteForm';
 import Spinner from './Spinner';
@@ -21,12 +21,19 @@ const StyledContainer = styled.div`
 // 3- protect the quotes path to check localStorage for userToken.
 export default function Container() {
   return (
-    <StyledContainer>
-      <Login />
-      <Spinner>
-        <Quotes />
-        <QuoteForm />
-      </Spinner>
-    </StyledContainer>
+    <Router>
+      <StyledContainer>
+        <nav>
+          <Link to='/'>Home</Link>
+          <Link to='/quotes'>Quotes</Link>
+          <Link to='/login'>Login</Link>
+        </nav>
+        <Login />
+        <Spinner>
+          <Quotes />
+          <QuoteForm />
+        </Spinner>
+      </StyledContainer>
+    </Router>
   );
 }
