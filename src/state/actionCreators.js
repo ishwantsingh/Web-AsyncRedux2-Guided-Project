@@ -32,6 +32,12 @@ export const addQuoteAsync = quote => dispatch => {
     });
 };
 
+export function fetchQuotes() {
+  return {
+    type: types.FETCH_QUOTES,
+  };
+}
+
 export function spinnerOn() {
   return {
     type: types.SPINNER_ON,

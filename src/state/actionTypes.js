@@ -6,3 +6,5 @@ export const SPINNER_ON = 'SPINNER_ON';
 export const SPINNER_OFF = 'SPINNER_OFF';
 export const WAKE_UP_SAGA = 'WAKE_UP_SAGA';
 export const SAGA_ANSWERS = 'SAGA_ANSWERS';
+export const FETCH_QUOTES = 'FETCH_QUOTES';
+export const FETCH_QUOTES_SUCCESS = 'FETCH_QUOTES_SUCCESS';

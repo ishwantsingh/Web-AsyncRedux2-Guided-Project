@@ -1,6 +1,6 @@
-import { watchRequests } from './requests';
+import fetchQuotes from './fetchQuotes';
 
 
 export default function* rootSaga() {
-  return yield* [watchRequests()];
+  return yield* [fetchQuotes()];
 }

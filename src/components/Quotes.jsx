@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { arrayOf, shape, string, func } from 'prop-types';
 import { bindActionCreators } from 'redux';
-import { getQuotesAsync, deleteQuoteAsync, makeQuoteOfTheDay, wakeUpSaga } from '../state/actionCreators';
+import { deleteQuoteAsync, makeQuoteOfTheDay, fetchQuotes } from '../state/actionCreators';
 import Quote from './Quote';
 
 
 export class Quotes extends React.Component {
   componentDidMount() {
-    this.props.getQuotesAsync();
+    this.props.fetchQuotes();
   }
 
   render() {
@@ -43,7 +43,7 @@ Quotes.propTypes = {
   })).isRequired,
   quoteOfTheDay: string, // not required because `null` is legit value for this prop
   // action creators
-  getQuotesAsync: func.isRequired,
+  fetchQuotes: func.isRequired,
   deleteQuoteAsync: func.isRequired,
   makeQuoteOfTheDay: func.isRequired,
 };
@@ -57,10 +57,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    getQuotesAsync,
     deleteQuoteAsync,
     makeQuoteOfTheDay,
-    wakeUpSaga,
+    fetchQuotes,
   }, dispatch);
 }
 
