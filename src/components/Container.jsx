@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+// import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Quotes from './Quotes';
 import QuoteForm from './QuoteForm';
 import Spinner from './Spinner';
-import Login from './Login';
-import { login } from '../state/actionCreators';
 
 
 const StyledContainer = styled.div`
@@ -18,38 +15,16 @@ const StyledContainer = styled.div`
   }
 `;
 
-export function Container(props) {
+// 1- use react router to break the app into /quotes and /login paths.
+// 2- create links to these paths.
+// 3- protect the quotes path to check localStorage for userToken.
+export default function Container() {
   return (
-    <Router>
-      <StyledContainer>
-        <nav>
-          <Link to='/'>Home</Link>
-          <Link to='/quotes'>My Quotes</Link>
-          <Link to='/login'>Login</Link>
-        </nav>
-
-        <h3>Welcome to my site</h3>
-
-        <Route
-          path='/quotes'
-          render={() => (
-            localStorage.getItem('userToken')
-              ? (
-                <Spinner>
-                  <Quotes />
-                  <QuoteForm />
-                </Spinner>
-              )
-              : <Redirect to='/login' />
-          )} />
-
-        <Route
-          path='/login'
-          render={() => <Login login={props.login} />}
-        />
-      </StyledContainer>
-    </Router>
+    <StyledContainer>
+      <Spinner>
+        <Quotes />
+        <QuoteForm />
+      </Spinner>
+    </StyledContainer>
   );
 }
-
-export default connect(st => st, { login })(Container);
