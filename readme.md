@@ -64,8 +64,31 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
           "password": "{{password}}"
       }
     ```
+
 # Steps
+
+## Custom Middleware
   * Test the endpoints on Postman.
-  * Flesh out a custom middleware that shoves action.payload into a localStorage key 'userToken', on LOGIN_SUCCESS.
-  * Flesh out the login async action creator that hits quotes/login and dispatches a LOGIN_SUCCESS with the token as payload.
-  * On login success, an action of type LOGIN_SUCCESS and payload containing the res.userToken is dispatched.
+  * Flesh out a custom middleware that shoves `action.payload` into a `localStorage` key `'userToken'`, on LOGIN_SUCCESS.
+
+## Async Action Creator for login
+  * Flesh out the `login` async action creator that hits `quotes/login` and dispatches a `LOGIN_SUCCESS` action with the token as payload.
+
+## Login component
+  * Create a `Login` component that takes `username` and `password` from text inputs.
+  * The `Login` component also has a button that hits the async action creator `login` passing `username` and `password`.
+  * Inspect Redux Devtools, Network Tab and Application tab to check the entire flow.
+  * If a `localStorage` key `'userToken'` is being set that means our custom middleware is working.
+  * Create a log out button inside `Login`, that wipes local storage.
+
+## Container component and routing
+  * Bring `react-router-dom` into Container.
+  * Create Links for paths `/`, `/quotes` and `/login`.
+  * Create Routes to `/login` and `/quotes`.
+  * The Route to `/quotes` renders `<Spinner><Quotes /><QuoteForm /></Spinner>` (the app as it stands).
+  * The Route to `/login` renders the newly created `Login` component.
+  * Connect the `Container` so we can pass the `login` action creator to the `Login` component through props.
+
+## Protect the /quotes route
+  * Create a Route that renders either a `<Redirect />` to `Login` or `<Spinner><Quotes /><QuoteForm /></Spinner>`.
+  * Which is rendered depends on whether there exists a `'userToken'` in `localStorage`.

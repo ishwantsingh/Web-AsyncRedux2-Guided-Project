@@ -18,23 +18,6 @@ const StyledContainer = styled.div`
   }
 `;
 
-export function ProtectedRoute() {
-  return (
-    <Route
-      path='/quotes'
-      render={() => (
-        localStorage.getItem('userToken')
-          ? (
-            <Spinner>
-              <Quotes />
-              <QuoteForm />
-            </Spinner>
-          )
-          : <Redirect to='/login' />
-      )} />
-  );
-}
-
 export function Container(props) {
   return (
     <Router>
@@ -47,7 +30,18 @@ export function Container(props) {
 
         <h3>Welcome to my site</h3>
 
-        <ProtectedRoute />
+        <Route
+          path='/quotes'
+          render={() => (
+            localStorage.getItem('userToken')
+              ? (
+                <Spinner>
+                  <Quotes />
+                  <QuoteForm />
+                </Spinner>
+              )
+              : <Redirect to='/login' />
+          )} />
 
         <Route
           path='/login'

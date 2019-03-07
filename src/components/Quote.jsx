@@ -2,7 +2,6 @@ import React from 'react';
 import { shape, string, func, bool } from 'prop-types';
 import styled from 'styled-components';
 
-
 const StyledQuote = styled.div`
   margin: 10px;
   padding: 8px;

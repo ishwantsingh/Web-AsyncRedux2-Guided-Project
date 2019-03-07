@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import { getQuotesAsync, deleteQuoteAsync, makeQuoteOfTheDay } from '../state/actionCreators';
 import Quote from './Quote';
 
-
 export class Quotes extends React.Component {
   componentDidMount() {
     this.props.getQuotesAsync();
