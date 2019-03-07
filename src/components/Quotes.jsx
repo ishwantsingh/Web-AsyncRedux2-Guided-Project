@@ -8,7 +8,7 @@ import Quote from './Quote';
 
 export class Quotes extends React.Component {
   componentDidMount() {
-    // this.props.getQuotesAsync();
+    this.props.getQuotesAsync();
   }
 
   render() {
