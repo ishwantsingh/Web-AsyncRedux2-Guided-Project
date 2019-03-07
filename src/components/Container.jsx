@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Quotes from './Quotes';
 import QuoteForm from './QuoteForm';
 import Spinner from './Spinner';
+import Login from './Login';
 
 
 const StyledContainer = styled.div`
@@ -21,6 +22,7 @@ const StyledContainer = styled.div`
 export default function Container() {
   return (
     <StyledContainer>
+      <Login />
       <Spinner>
         <Quotes />
         <QuoteForm />
