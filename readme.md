@@ -75,7 +75,7 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
   * Flesh out the `login` async action creator that hits `quotes/login` and dispatches a `LOGIN_SUCCESS` action with the token as payload.
 
 ## Login component
-  * Create a `Login` component that takes `username` and `password` from text inputs.
+  * There is a `Login` component that takes `username` and `password` from text inputs.
   * The `Login` component also has a button that hits the async action creator `login` passing `username` and `password`.
   * Inspect Redux Devtools, Network Tab and Application tab to check the entire flow.
   * If a `localStorage` key `'userToken'` is being set that means our custom middleware is working.

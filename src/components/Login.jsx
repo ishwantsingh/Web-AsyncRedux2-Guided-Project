@@ -20,7 +20,7 @@ export default class Login extends React.Component {
         <div>password <input type="text" ref={this.passRef} /></div>
 
         <button onClick={this.onLogin}>Log in</button>
-        <button onClick={() => localStorage.clear()}>Log out</button>
+        {/* Create a Log Out button that flushes 'userKey' from local storage */}
       </div>
     );
   }
