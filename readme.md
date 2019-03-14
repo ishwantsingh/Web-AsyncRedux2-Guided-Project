@@ -68,7 +68,7 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
 # Steps
 
 ## Custom Middleware
-  * Test the endpoints on Postman.
+  * Test the endpoints above on Postman.
   * Flesh out a custom middleware that shoves `action.payload` into a `localStorage` key `'userToken'`, on LOGIN_SUCCESS.
 
 ## Async Action Creator for login
