@@ -12,16 +12,6 @@ export const deleteQuoteAsync = id => dispatch => {
     });
 };
 
-export const getQuotesAsync = () => dispatch => {
-  dispatch(spinnerOn());
-  fetch('http://gabe.mockable.io/quotes')
-    .then(res => res.json())
-    .then(quotes => {
-      dispatch({ type: types.ADD_QUOTES, payload: quotes });
-      dispatch(spinnerOff());
-    });
-};
-
 export const addQuoteAsync = quote => dispatch => {
   dispatch(spinnerOn());
   fetch(`http://gabe.mockable.io/quotes`, { method: 'POST', body: JSON.stringify(quote) })
