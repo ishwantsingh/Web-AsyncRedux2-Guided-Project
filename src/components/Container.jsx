@@ -1,11 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
-// import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
-import Quotes from './Quotes';
-import QuoteForm from './QuoteForm';
-import Spinner from './Spinner';
-import LoginForm from './Login';
-
+import React from "react";
+import styled from "styled-components";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
+import Quotes from "./Quotes";
+import QuoteForm from "./QuoteForm";
+import Spinner from "./Spinner";
+import Login from "./Login";
 
 const StyledContainer = styled.div`
   padding: 10px;
@@ -21,12 +25,29 @@ const StyledContainer = styled.div`
 // 3- protect the quotes path to check localStorage for userToken.
 export default function Container() {
   return (
-    <StyledContainer>
-      <Spinner>
-        <Quotes />
-        <QuoteForm />
-      </Spinner>
-      <LoginForm />
-    </StyledContainer>
+    <Router>
+      <StyledContainer>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/quotes">Quotes</Link>
+          <Link to="/login">Login</Link>
+        </nav>
+
+        <Route
+          path="/quotes"
+          render={() =>
+            localStorage.getItem("userToken") ? (
+              <Spinner>
+                <Quotes />
+                <QuoteForm />
+              </Spinner>
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
+        />
+        <Route path="/login" render={() => <Login />} />
+      </StyledContainer>
+    </Router>
   );
 }
